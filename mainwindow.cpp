@@ -5,6 +5,12 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    QFontDatabase font_DB;
+    font_DB.addApplicationFont(":/fonts/FreeSerif.otf");
+    font_DB.addApplicationFont(":/fonts/FreeSerifBold.otf");
+    font_DB.addApplicationFont(":/fonts/FreeSerifItalic.otf");
+    font_DB.addApplicationFont(":/fonts/FreeSerifBoldItalic.otf");
+
     ui->setupUi(this);
 
     QObject::connect( ui->pushButton_save,  &QPushButton::clicked,
@@ -128,7 +134,10 @@ void MainWindow::updateDisplay() {
             case Note::G : pitch_str = "G"; break;
             case Note::REST : pitch_str = " "; break;
         }
-        QString octave_str = QString::number(notes[i_note].get_octave());
+        QString octave_str = " ";
+        if (notes[i_note].get_pitch() != Note::REST) {
+            octave_str = QString::number(notes[i_note].get_octave());
+        }
 
         WidgetNote* new_note =
                 new WidgetNote( note_str,

@@ -14,6 +14,7 @@
 
 #include <QRegularExpression>
 
+#include <QFontDatabase>
 #include <QStyleFactory>
 
 #include <QScrollBar>

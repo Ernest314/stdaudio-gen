@@ -24,3 +24,6 @@ HEADERS  += mainwindow.h \
     widgetnote.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    fonts.qrc
